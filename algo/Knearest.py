@@ -2,15 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import neighbors
 
+np.random.seed(0)
 cov = np.array([[1,0], [0,1]])
 N = 50
 
 # label 0 : red
 X0 = np.random.multivariate_normal([3, 3], cov, N)
-
 # 1 : green
 X1 = np.random.multivariate_normal([9, 8], cov, N)
-
 # 2 : blue
 X2 = np.random.multivariate_normal([7, 4], cov, N)
 
@@ -31,10 +30,6 @@ plt.plot(point[0], point[1], 'ko')
 plt.plot(point1[0], point1[1], 'ko')
 plt.plot(point2[0], point2[1], 'ko')
 plt.plot(point3[0], point3[1], 'ko')
-
-# print(res)
-# print(len(data))
-# print(data)
 plt.show()
 
 # from sklearn.model_selection import train_test_split
@@ -44,7 +39,5 @@ clf = neighbors.KNeighborsClassifier(n_neighbors = 20)
 clf.fit(data, res)
 
 result = clf.predict([point, point1, point2, point3])
-# result2 = clf.predict(point2)
-# result3 = clf.predict(point3)
 
 print(result)
